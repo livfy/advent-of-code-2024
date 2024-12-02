@@ -48,6 +48,19 @@ struct Day01: AdventDay {
     }
 
     func part2() -> Any {
-        return 0
+        let left = locations.map { $0.first ?? 0 }
+        let right = locations.map { $0.second ?? 0 }
+
+        var similarityScore = 0
+
+
+        for location in left {
+            let count = right.count {
+                $0 == location
+            }
+            similarityScore += location * count
+        }
+
+        return similarityScore
     }
 }
